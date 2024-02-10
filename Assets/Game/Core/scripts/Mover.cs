@@ -24,16 +24,22 @@ public class Mover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(Input.GetMouseButtonDown(0))
+       if(Input.GetMouseButton(0))
         {
             MoveToCursor();
             //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         }
 
 
-        //Debug.DrawRay(ray.origin, ray.direction*700);
+        UpdateAnimator();
+    }
 
-        //agent.destination = target.position;
+    private void UpdateAnimator()
+    {
+        Vector3 globalVal = agent.velocity;
+        Vector3 localVal = transform.InverseTransformDirection(globalVal);
+        float speed = localVal.z;
+        GetComponent<Animator>().SetFloat("ForwardSpeed", speed);
     }
 
     private void MoveToCursor()

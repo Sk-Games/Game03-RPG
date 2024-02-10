@@ -8,7 +8,7 @@ public class FollowPlayer : MonoBehaviour
    
 
    
-    void Update()
+    void LateUpdate()
     {
         this.transform.position = target.position;
     }
