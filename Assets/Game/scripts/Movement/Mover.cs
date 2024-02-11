@@ -5,6 +5,8 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using RPG.Combat;
+using RPG.Core;
 
 
 namespace RPG.Movement
@@ -33,9 +35,25 @@ namespace RPG.Movement
             GetComponent<Animator>().SetFloat("ForwardSpeed", speed);
         }
 
+        public void StartMoveAction(Vector3 destination)
+        {
+            GetComponent<ActionSchedular>().StartAction(this);
+            GetComponent<Fighter>().Cancel();
+            MoveTo(destination);
+
+        }
+
+
         public void MoveTo(Vector3 destination)
         {
             agent.destination = destination;
+            agent.isStopped = false;
+            
+        }
+
+        public void Stop()
+        {
+            agent.isStopped = true;
         }
     }
 
