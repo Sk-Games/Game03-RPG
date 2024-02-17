@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
-using System;
+using RPG.core;
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour
+    public class Fighter : MonoBehaviour, IAction
     {
         [SerializeField] float weaponRange = 2f;
         [SerializeField] float timeBetweenAttacks = 0f;
         [SerializeField] float weaponDamage = 5f;
 
-        private float timeSinceLastAttack = 0f;
+        private float timeSinceLastAttack = Mathf.Infinity;
         Health target;
         
 
@@ -24,11 +23,12 @@ namespace RPG.Combat
 
             if (!GetIsInRange())
             {
-                GetComponent<Mover>().MoveTo(target.transform.position);
+                GetComponent<Mover>().MoveTo(target.transform.position, 1f);
             }
             else
             {
-                GetComponent<Mover>().Stop();
+                //GetComponent<Mover>().Stop();
+                GetComponent<Mover>().Cancel();
                 AttackBehaviour();
             }
         }
@@ -64,7 +64,7 @@ namespace RPG.Combat
             return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
         }
 
-        public void Attack(CombatTarget combatTarget)
+        public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionSchedular>().StartAction(this);
 
@@ -72,7 +72,7 @@ namespace RPG.Combat
             print("Attack !!");
         }
 
-        public bool CanAttack(CombatTarget combatTarget)
+        public bool CanAttack(GameObject combatTarget)
         {
             if(combatTarget == null) return false;
             Health targetToTest = combatTarget.GetComponent<Health>();

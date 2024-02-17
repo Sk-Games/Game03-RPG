@@ -1,26 +1,26 @@
 using RPG.Combat;
 using RPG.Movement;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using RPG.Core;
 
 namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
     {
+        Health health;
         // this script is responsible for controlling all the things like input controls 
         void Start()
         {
-
+            health = GetComponent<Health>();
         }
 
 
         void Update()
         {
+            if(health.IsDead()) { return; }
             if (InteractWithCombat()) { return; }
             if (InteractWithMovement()) { return; }
-            print("nothing is there");
+            //print("nothing is there");
             
 
         }
@@ -31,11 +31,15 @@ namespace RPG.Control
             foreach (RaycastHit hit in hits)
             {
                 CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-                if (!GetComponent<Fighter>().CanAttack(target)) {  continue; }
+
+                if(target == null) { continue; }
+
+                if (!GetComponent<Fighter>().CanAttack(target.gameObject)) {  continue; }
                 if (target == null) { continue; }
-                if(Input.GetMouseButtonDown(0))
+
+                if(Input.GetMouseButton(0))
                 {
-                    GetComponent<Fighter>().Attack(target);                   
+                    GetComponent<Fighter>().Attack(target.gameObject);                   
                 }
                 return true;
             }
@@ -51,7 +55,7 @@ namespace RPG.Control
             {
                 if(Input.GetMouseButton(0))
                     {
-                        GetComponent<Mover>().StartMoveAction(hit.point); 
+                        GetComponent<Mover>().StartMoveAction(hit.point,1f); 
                     }
                 return true;
             }

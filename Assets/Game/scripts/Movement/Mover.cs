@@ -1,29 +1,28 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
+
 using UnityEngine;
 using UnityEngine.AI;
-using RPG.Combat;
 using RPG.Core;
+using RPG.core;
 
 
 namespace RPG.Movement
 {
-    public class Mover : MonoBehaviour
+    public class Mover : MonoBehaviour, IAction
     {
         //[SerializeField] Transform target;
+        [SerializeField] float maxSpeed = 6f;
         NavMeshAgent agent;
+        Health health;
 
         void Start()
         {
             agent = GetComponent<NavMeshAgent>();
+            health = GetComponent<Health>();
         }
 
         void Update()
         {
-
+            agent.enabled = !health.IsDead();
             UpdateAnimator();
         }
 
@@ -35,26 +34,28 @@ namespace RPG.Movement
             GetComponent<Animator>().SetFloat("ForwardSpeed", speed);
         }
 
-        public void StartMoveAction(Vector3 destination)
+        public void StartMoveAction(Vector3 destination, float speedFraction)
         {
             GetComponent<ActionSchedular>().StartAction(this);
-            GetComponent<Fighter>().Cancel();
-            MoveTo(destination);
+            
+            MoveTo(destination,speedFraction);
 
         }
 
 
-        public void MoveTo(Vector3 destination)
+        public void MoveTo(Vector3 destination, float speedFraction)
         {
             agent.destination = destination;
+            agent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
             agent.isStopped = false;
             
         }
 
-        public void Stop()
+        public void Cancel()
         {
             agent.isStopped = true;
         }
+        
     }
 
 }
