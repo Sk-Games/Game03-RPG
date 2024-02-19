@@ -70,15 +70,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5719522441654281024, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.2723301
       objectReference: {fileID: 0}
     - target: {fileID: 5719522441654281024, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.691303
       objectReference: {fileID: 0}
     - target: {fileID: 5719522441654281024, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10.5
       objectReference: {fileID: 0}
     - target: {fileID: 5719522441654281024, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -86,15 +86,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5719522441654281024, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5719522441654281024, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5719522441654281024, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5719522441654281024, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -114,7 +114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5719522441654281028, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy (5)
       objectReference: {fileID: 0}
     - target: {fileID: 5719522441654281031, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
       propertyPath: m_Radius
@@ -174,3 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseDistance: 5
   suspiciousTime: 5
+  patrolPath: {fileID: 0}
+  waypointTolerance: 1
+  waypointDwellTime: 3
+  patrolSpeedFraction: 0.2
