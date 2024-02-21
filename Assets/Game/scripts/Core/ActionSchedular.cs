@@ -1,6 +1,5 @@
-using RPG.core;
-using System.Collections;
-using System.Collections.Generic;
+
+
 using UnityEngine;
 
 namespace RPG.Core
@@ -14,7 +13,7 @@ namespace RPG.Core
             if (currentAction != null)
             {
                 currentAction.Cancel();
-                print("cancelling" + currentAction);
+               // print("cancelling" + currentAction);
             }
             currentAction = action;
         }

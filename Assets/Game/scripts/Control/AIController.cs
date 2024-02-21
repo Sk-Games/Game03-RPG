@@ -83,7 +83,7 @@ namespace RPG.Control
                     CycleWaypoint();
                 }
                 nextPosition = GetCurrentWaypoint();
-                print(nextPosition);
+                //print(nextPosition);
             }
             if(timeSinceArrivedAtWaypoint>waypointDwellTime)
             {

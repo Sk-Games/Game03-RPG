@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using RPG.Core;
-using RPG.core;
+
 
 
 namespace RPG.Movement
