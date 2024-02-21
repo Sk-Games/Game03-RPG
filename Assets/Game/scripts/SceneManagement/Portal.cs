@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 namespace RPG.SceneManagement
@@ -31,32 +32,33 @@ namespace RPG.SceneManagement
 
         private IEnumerator Transition()
         {
-            //if(sceneToLoad < 0)
-            //{
-             //   Debug.LogError("Scene To Load Not Set");
-             //   yield break;
-            //}
+            if(sceneToLoad < 0)
+            {
+                Debug.LogError("Scene To Load Not Set");
+                yield break;
+            }
 
             DontDestroyOnLoad(gameObject);
             print("not working");
-            //Fader fader = FindObjectOfType<Fader>();
+            Fader fader = FindObjectOfType<Fader>();
 
-            //yield return fader.FadeOut(fadeOutTime);
+            yield return fader.FadeOut(fadeOutTime);
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
             print("Scene Loaded");
 
-            //Portal otherPortal = GetOtherPortal();
-            //UpdatePlayer(otherPortal);
-            //yield return new WaitForSeconds(fadeWaitTime);
-            //yield return fader.FadeIn(fadeInTime);
+            Portal otherPortal = GetOtherPortal();
+            UpdatePlayer(otherPortal);
+            yield return new WaitForSeconds(fadeWaitTime);
+            yield return fader.FadeIn(fadeInTime);
             Destroy(gameObject);
         }
 
         private void UpdatePlayer(Portal otherPoertal)
         {
             GameObject player = GameObject.FindWithTag("Player");
-            player.transform.position = otherPoertal.transform.position;
-            player.transform.rotation = otherPoertal.transform.rotation;
+            //player.transform.position = otherPoertal.spawnPoint.position;
+            player.GetComponent<NavMeshAgent>().Warp(otherPoertal.spawnPoint.position);
+            player.transform.rotation = otherPoertal.spawnPoint.rotation;
 
         }
 
