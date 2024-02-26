@@ -2,21 +2,36 @@
 using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
+using System;
 
 namespace RPG.Combat
 {
     public class Fighter : MonoBehaviour, IAction
     {
-        [SerializeField] float weaponRange = 2f;
-        [SerializeField] float timeBetweenAttacks = 0f;
-        [SerializeField] float weaponDamage = 5f;
+        
+        [SerializeField] float timeBetweenAttacks = 0f;     
+        //[SerializeField] Weapon weapon = null;       
+        [SerializeField] Transform handTransform = null;
+        [SerializeField] Weapon defaultWeapon = null;
+        
 
         private float timeSinceLastAttack = Mathf.Infinity;
         Health target;
+        Weapon currentWeapon = null;
+
+        
+        private void Start()
+        {
+            //print("hello");
+            EquipWeapon(defaultWeapon);
+
+        }
+
         
 
         private void Update()
         {
+            
             timeSinceLastAttack += Time.deltaTime;
             if (target == null) return;
             if(target.IsDead()) return;
@@ -31,6 +46,14 @@ namespace RPG.Combat
                 GetComponent<Mover>().Cancel();
                 AttackBehaviour();
             }
+        }
+
+        public void EquipWeapon(Weapon weapon)
+        {
+            currentWeapon = weapon;
+            //if(weapon == null) { return; }
+            Animator animator = GetComponent<Animator>();
+            weapon.Spawn(handTransform, animator);
         }
 
         private void AttackBehaviour()
@@ -56,12 +79,12 @@ namespace RPG.Combat
         void Hit()
         {
             if(target == null) return;
-            target.TakeDamage(weaponDamage);
+            target.TakeDamage(currentWeapon.GetDamage());
         }
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
+            return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.GetRange();
         }
 
         public void Attack(GameObject combatTarget)

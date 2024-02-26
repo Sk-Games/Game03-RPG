@@ -27,6 +27,7 @@ namespace RPG.Cinematics
 
         private void EnableControl(PlayableDirector pd)
         {
+            //check later
             player.GetComponent<PlayerController>().enabled = true;
         }
 

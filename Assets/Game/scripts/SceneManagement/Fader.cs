@@ -16,6 +16,7 @@ namespace RPG.SceneManagement
         public void FadeOutImmediate()
         {
             canvasGroup.alpha = 1;
+            
         }
 
         public IEnumerator FadeOut(float time)
