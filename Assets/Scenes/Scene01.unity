@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 884598f3ddc9eec419a1a074582f671e, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 528745d3e08bf72418710bf127113cca, type: 2}
 --- !u!1 &28407976
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3651553209945249294, guid: c98aef0add663f34bb2177754aac1860, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.33
+      value: -1.91
       objectReference: {fileID: 0}
     - target: {fileID: 3651553209945249294, guid: c98aef0add663f34bb2177754aac1860, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3579,7 +3579,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492299408}
-  m_LocalRotation: {x: 0.11241795, y: -0.8144815, z: 0.1684023, w: 0.543712}
+  m_LocalRotation: {x: 0.112417944, y: -0.8144815, z: 0.1684023, w: 0.5437121}
   m_LocalPosition: {x: 3.11, y: 6.35, z: 20.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3838,7 +3838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8530511426975727844, guid: 664ff6e26aff15942a2886a49543cadc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -30.94
+      value: -17.04
       objectReference: {fileID: 0}
     - target: {fileID: 8530511426975727844, guid: 664ff6e26aff15942a2886a49543cadc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3846,7 +3846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8530511426975727844, guid: 664ff6e26aff15942a2886a49543cadc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.109936
+      value: -21.73
       objectReference: {fileID: 0}
     - target: {fileID: 8530511426975727844, guid: 664ff6e26aff15942a2886a49543cadc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5533,6 +5533,10 @@ PrefabInstance:
       propertyPath: defaultWeapon
       value: 
       objectReference: {fileID: 11400000, guid: 9d78cb7ff9062a549b7a29d4fca38d99, type: 2}
+    - target: {fileID: 4887329259532487563, guid: 88d5a4a46528cf24ca0df6af617b791e, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7630178817061626729, guid: 88d5a4a46528cf24ca0df6af617b791e, type: 3}
       propertyPath: m_Name
       value: Core
