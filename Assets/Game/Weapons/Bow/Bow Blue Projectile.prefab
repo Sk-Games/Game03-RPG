@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 910557040734898227, guid: 8e73978429bbb5f4fb461b0888c0af04, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 7134035882509218537, guid: 89f34624adf1864459fd74da3e7c03a4, type: 3}
     - target: {fileID: 8183783456831740941, guid: 8e73978429bbb5f4fb461b0888c0af04, type: 3}
       propertyPath: m_Name
-      value: Arrow Projectile
+      value: Bow Blue Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 8183783456831740942, guid: 8e73978429bbb5f4fb461b0888c0af04, type: 3}
       propertyPath: m_RootOrder
