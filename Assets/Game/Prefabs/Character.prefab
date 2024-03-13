@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 6946476201136023240}
   - component: {fileID: 425446200936767125}
   - component: {fileID: 8985535519889972694}
+  - component: {fileID: 6706005968955153537}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -231,3 +232,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6706005968955153537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719522441654281028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca30844397fbe6479de1e08f2a33119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startinglevel: 1
+  characterClass: 0
+  progression: {fileID: 11400000, guid: 1f2f618981c54e3408d589549e10a0d4, type: 2}

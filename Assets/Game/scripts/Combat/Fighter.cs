@@ -2,8 +2,8 @@
 using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
-using System;
 using RPG.Saving;
+using RPG.Attribute;
 
 namespace RPG.Combat
 {
@@ -60,6 +60,11 @@ namespace RPG.Combat
             //if(weapon == null) { return; }
             Animator animator = GetComponent<Animator>();
             weapon.Spawn(rightHandTransform,leftHandTransform, animator);
+        }
+
+        public Health GetTarget()
+        {
+            return target;
         }
 
         private void AttackBehaviour()
@@ -142,7 +147,7 @@ namespace RPG.Combat
         public void RestoreState(object state)
         {
             string weaponName = (string)state;
-            Weapon weapon = Resources.Load<Weapon>(weaponName);
+            Weapon weapon = UnityEngine.Resources.Load<Weapon>(weaponName);
             EquipWeapon(weapon);
         }
     }
