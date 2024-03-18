@@ -39,36 +39,39 @@ namespace RPG.SceneManagement
             }
 
             DontDestroyOnLoad(gameObject);
-            //print("not working");
+            
             Fader fader = FindObjectOfType<Fader>();
+            SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
+            yield return fader.FadeOut(fadeOutTime); //error solve later
 
-            yield return fader.FadeOut(fadeOutTime);
-
-            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
-            wrapper.Save();
+            
+            savingWrapper.Save();
 
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
-            //print("Scene Loaded");
 
-            wrapper.Load();
-
+            savingWrapper.Load();
+            
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
 
-            wrapper.Save();
-
-            yield return new WaitForSeconds(fadeWaitTime);
-            yield return fader.FadeIn(fadeInTime);
+            savingWrapper.Save();
+            print("fade out done");
+            print(gameObject.name);
+            yield return new WaitForSeconds(fadeWaitTime);            
+            yield return fader.FadeIn(fadeInTime);            
             Destroy(gameObject);
         }
 
-        private void UpdatePlayer(Portal otherPoertal)
+        private void UpdatePlayer(Portal otherPortal)
         {
             GameObject player = GameObject.FindWithTag("Player");
             //player.transform.position = otherPoertal.spawnPoint.position;
-            player.GetComponent<NavMeshAgent>().Warp(otherPoertal.spawnPoint.position);
-            player.transform.rotation = otherPoertal.spawnPoint.rotation;
-
+            //player.GetComponent<NavMeshAgent>().Warp(otherPoertal.spawnPoint.position);
+            //player.transform.rotation = otherPoertal.spawnPoint.rotation;
+            player.GetComponent<NavMeshAgent>().enabled = false;
+            player.transform.position = otherPortal.spawnPoint.position;
+            player.transform.rotation = otherPortal.spawnPoint.rotation;
+            player.GetComponent<NavMeshAgent>().enabled = true;
         }
 
         private Portal GetOtherPortal()

@@ -57,9 +57,10 @@ namespace RPG.Combat
         public void EquipWeapon(Weapon weapon)
         {
             currentWeapon = weapon;
-            //if(weapon == null) { return; }
+            if(weapon == null) { return; }
+            print(weapon.name + " used");
             Animator animator = GetComponent<Animator>();
-            weapon.Spawn(rightHandTransform,leftHandTransform, animator);
+            weapon.Spawn(rightHandTransform,leftHandTransform, animator);//error solve later nullreference
         }
 
         public Health GetTarget()
@@ -92,11 +93,11 @@ namespace RPG.Combat
             if(target == null) return;
             if (currentWeapon.HasProjectile())
             {
-                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject);
             }
             else
             {
-                target.TakeDamage(currentWeapon.GetDamage());
+                target.TakeDamage(gameObject,currentWeapon.GetDamage());
             }
             
         }
@@ -116,7 +117,7 @@ namespace RPG.Combat
             GetComponent<ActionSchedular>().StartAction(this);
 
             target = combatTarget.GetComponent<Health>();
-            print("Attack !!");
+            
         }
 
         public bool CanAttack(GameObject combatTarget)
@@ -147,7 +148,7 @@ namespace RPG.Combat
         public void RestoreState(object state)
         {
             string weaponName = (string)state;
-            Weapon weapon = UnityEngine.Resources.Load<Weapon>(weaponName);
+            Weapon weapon = Resources.Load<Weapon>(weaponName);
             EquipWeapon(weapon);
         }
     }

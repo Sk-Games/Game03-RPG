@@ -21,7 +21,7 @@ namespace RPG.SceneManagement
 
         public IEnumerator FadeOut(float time)
         {
-            while(canvasGroup.alpha < 1.0f)
+            while(canvasGroup.alpha < 1)
             {
                 canvasGroup.alpha += Time.deltaTime / time;
                 yield return null;

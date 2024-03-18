@@ -70,10 +70,10 @@ namespace RPG.Combat
 
         }
 
-        public void LaunchProjectile(Transform righthand, Transform leftHand, Health target)
+        public void LaunchProjectile(Transform righthand, Transform leftHand, Health target,GameObject instigator)
         {
             Projectile projectileInstance = Instantiate(projectile, GetTransform(righthand, leftHand).position, Quaternion.identity);
-            projectileInstance.SetTarget(target, weaponDamage);
+            projectileInstance.SetTarget(target,instigator, weaponDamage);
         }
 
         public float GetDamage()
