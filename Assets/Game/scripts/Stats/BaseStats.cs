@@ -12,6 +12,8 @@ namespace RPG.Stats
         [SerializeField] CharacterClass characterClass;
         [SerializeField] Progression progression = null;
 
+        int currentLevel = 0;
+
         private void Update()
         {
             if(gameObject.tag == "Player")
