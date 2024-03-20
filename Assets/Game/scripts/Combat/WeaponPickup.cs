@@ -21,7 +21,7 @@ namespace RPG.Combat
 
         IEnumerator HideForSeconds(float seconds)
         {
-            //print("hello");
+            
             ShowPickUp(false);
             yield return new WaitForSeconds(seconds);
             ShowPickUp(true);

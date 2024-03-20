@@ -58,9 +58,9 @@ namespace RPG.Combat
         {
             currentWeapon = weapon;
             if(weapon == null) { return; }
-            print(weapon.name + " used");
+            //print(weapon.name + " used");
             Animator animator = GetComponent<Animator>();
-            weapon.Spawn(rightHandTransform,leftHandTransform, animator);//error solve later nullreference
+            weapon.Spawn(rightHandTransform,leftHandTransform, animator);
         }
 
         public Health GetTarget()
