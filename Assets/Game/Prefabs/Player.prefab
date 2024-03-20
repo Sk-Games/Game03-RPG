@@ -162,6 +162,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5719522441654281027, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
+      propertyPath: m_BaseOffset
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5719522441654281028, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -171,15 +175,7 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5719522441654281031, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
-      propertyPath: m_Radius
-      value: 0.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 5719522441654281031, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
       propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5719522441654281031, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
-      propertyPath: m_Center.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6946476201136023240, guid: 076730ac3f12b664c89cff5650d3d11a, type: 3}
