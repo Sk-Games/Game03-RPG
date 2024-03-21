@@ -24,23 +24,27 @@ namespace RPG.Stats
             Experience experience = GetComponent<Experience>();
             if(experience != null)
             {
+                //print("experience gained");
                 experience.onExperienceGained += UpdateLevel;
             }
         }
 
-        private void UpdateLevel()
+        private void UpdateLevel()//edit public to private
         {
             int newLevel = CalculateLevel();
             if(newLevel > currentLevel)
             {
+                //print("leveled Up!");
                 currentLevel = newLevel;
                 LevelUpEffect();
                 onLevelUp();
+
             }
         }
 
         private void LevelUpEffect()
         {
+            //print("level up particle system");
             Instantiate(levelUpParticleEffect,transform);
         }
 
@@ -53,8 +57,10 @@ namespace RPG.Stats
         {
             if (currentLevel < 1)
             {
+
                 currentLevel = CalculateLevel();
             }
+            print("current level"+currentLevel);
             return currentLevel;
         }
         
@@ -62,17 +68,20 @@ namespace RPG.Stats
         {
             Experience experience = GetComponent<Experience>();
 
+            //print("experience component gained "+ experience.name);
+
             if(experience == null) { return startinglevel; }
 
             float currentXP = experience.GetPoints();
 
             int penultimateLevel = progression.GetLevels(Stat.ExperienceToLevelUp, characterClass);
-
+            print("solution01: "+penultimateLevel);
             for (int level = 1; level <= penultimateLevel; level++)
             {
                 float XPToLevelUP = progression.GetStat(Stat.ExperienceToLevelUp, characterClass,level);
                 if (XPToLevelUP > currentXP) 
-                { 
+                {
+                    //print(level);
                     return level; 
                 }
             }

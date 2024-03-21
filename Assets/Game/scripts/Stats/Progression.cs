@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 namespace RPG.Stats
@@ -27,7 +28,10 @@ namespace RPG.Stats
 
         public int GetLevels(Stat stat,CharacterClass characterClass)
         {
+            
             float[] levels = lookupTable[characterClass][stat];
+            //Debug.Log(levels);
+            Debug.Log("length: "+levels.Length);
             return levels.Length;
         }
 

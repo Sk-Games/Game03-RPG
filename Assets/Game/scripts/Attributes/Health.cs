@@ -29,12 +29,14 @@ namespace RPG.Attribute
         public void TakeDamage(GameObject instigator,float damage)
         {
             print(gameObject.name + " took damage: " + damage);
+
             healthPoints = Mathf.Max(healthPoints - damage, 0);
             if (healthPoints == 0)
             {
-                AwardExperience(instigator);
-                Die();
                 
+                Die();
+                AwardExperience(instigator);//check for error
+
             }
         }
 
