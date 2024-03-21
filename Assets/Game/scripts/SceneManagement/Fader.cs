@@ -1,3 +1,11 @@
+/*
+ * This module contains the public methods 
+ * that can be called whenever we want to fadeOut or fadeIn
+ * for ex. at the time of level loading.
+ */
+
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,8 +23,7 @@ namespace RPG.SceneManagement
 
         public void FadeOutImmediate()
         {
-            canvasGroup.alpha = 1;
-            
+            canvasGroup.alpha = 1;     
         }
 
         public IEnumerator FadeOut(float time)
